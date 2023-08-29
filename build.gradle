@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+    id 'org.graalvm.buildtools.native' version '0.9.25'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+
+    testImplementation 'ch.qos.logback.contrib:logback-json-classic:0.1.5'
+    testImplementation 'org.assertj:assertj-core:3.22.0'
+    testImplementation 'ch.qos.logback:logback-classic:1.4.1'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+graalvmNative {
+    agent {
+        defaultMode = "conditional"
+        modes {
+            conditional {
+                userCodeFilterPath = "metadata-user-code-filter.json"
+            }
+        }
+    }
+}
