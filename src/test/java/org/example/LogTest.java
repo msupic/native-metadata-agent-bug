@@ -20,7 +20,7 @@ class LogTest {
                 <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
                     <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
                         <layout class="ch.qos.logback.contrib.json.classic.JsonLayout">
-                            <jsonFormatter class="ch_qos_logback_contrib.logback_json_classic.CustomJsonFormatter"/>
+                            <jsonFormatter class="org.example.CustomFormatter"/>
                         </layout>
                     </encoder>
                 </appender>
